@@ -1,3 +1,5 @@
+#https://leetcode.com/problems/two-sum/description/?submissionId=1052456196
+
 def two_sum(nums, target):
     for i in range(0, len(nums) - 1):
         b = target - nums[i]
