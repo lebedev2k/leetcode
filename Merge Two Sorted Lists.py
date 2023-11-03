@@ -13,22 +13,23 @@ def mergeTwoLists(list1: ListNode, list2: ListNode) -> ListNode:
 
     head = list2
 
-    #previous_node = None
     current_node = list2
-    while list1:
-        #поиск подходящего места
+
+    while list1: #берем поочереди элементы из списка 1 и ищем куда их вставить в список 2
+        #поиск подходящего места для вставки
         while current_node.next and list1.val > current_node.next.val:
             current_node = current_node.next
 
         tmp = list1
         list1 = list1.next
 
-        if current_node == head:
-            tmp.next = current_node
-            head = tmp
-        # elif not current_node.next:
-        #     tmp.next = current_node.next
-        #     current_node.next = tmp
+        if current_node == head: #найденное место совпадает с головой списка, в который вставляем
+            if current_node.val > tmp.val: #определяем вставлять до или после головы
+                tmp.next = current_node
+                head = tmp #вставили в начало списка, поэтому меняется голова
+            else:
+                tmp.next = current_node.next
+                current_node.next = tmp
         else:
             tmp.next = current_node.next
             current_node.next = tmp
@@ -37,8 +38,8 @@ def mergeTwoLists(list1: ListNode, list2: ListNode) -> ListNode:
     return head
 
 
-list1 = [1,2,4]
-list2 = [1,3,4]
+list1 = [1,2,3]
+list2 = [2,5,8]
 
 root1 = current_node = None
 for item in list1:
