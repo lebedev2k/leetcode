@@ -8,17 +8,18 @@ def makeGood(s: str) -> str:
     new_string = []
     while True:
         i = 0
-        last = True
+        # last = True
         while i < len(s)-1:
             pair = (s[i], s[i+1])
             if pair not in a and pair not in b:
                 new_string.append(s[i])
                 i += 1 
-                last = True
+                # last = True
             else:
                 i += 2
-                last = False
-        if last and len(s)>0:
+                # last = False
+        # if last and len(s)>0:
+        if i == len(s)-1:
             new_string.append(s[-1])
         if len(s) == len(new_string):
             break
